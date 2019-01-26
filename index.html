@@ -1,0 +1,464 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>Páginas de Rua</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  
+     <!-- Font Awesome -->
+     <script defer src="https://use.fontawesome.com/releases/v5.0.10/js/all.js" integrity="sha384-slN8GvtUJGnv6ca26v8EzVaR9DC58QEwsIk9q1QXdCU8Yu8ck/tL/5szYlBbqmS+" crossorigin="anonymous"></script>
+    
+    <!-- index CSS -->
+    <link href="assets/css/index.css"rel="stylesheet">
+
+    <!-- index JavaScript -->
+    <script src="index.js"></script>
+</head>
+  <body>
+      <!--BARRA DE NAVEGAÇÃO-->
+      <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
+        <a class="navbar-brand" href="#">Páginas de Rua</a>
+        <button class="navbar-toggler hidden-lg-up" type="button" data-toggle="collapse" data-target="#collapsibleNavId" aria-controls="collapsibleNavId"
+            aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="collapsibleNavId">
+            <ul class="navbar-nav mr-auto">
+                <!--OPÇÃO REGISTO DE LIVROS-->
+                <li class="nav-item" id="navDoar">
+                    <a class="nav-link" href="#doar">Doar Livros</a>
+                </li>
+                <!--OPÇÃO CATÁLOGO-->
+                <li class="nav-item">
+                    <a class="nav-link" href="#catalogo">Catálogo</a>
+                </li>
+                <!--OPÇÃO REQUISIÇÃO/ENTREGA-->
+                <li class="nav-item" id="navReqEnt">
+                    <a class="nav-link" href="#reqEnt">Requisição/Entrega</a>
+                </li>
+                <!--OPÇÃO Notificações LIVROS-->
+                <li class="nav-item" id="navNotif">
+                    <a class="nav-link" href="#notif">Notificações</a>
+                </li>    
+                <!--OPÇÃO CONFIGURAÇÕES-->
+                <li class="nav-item" id="navConfig">
+                    <a class="nav-link" href="#configuracoes">Configurações</a>
+                </li>                    
+            </ul>
+            <ul class="navbar-nav">
+              <!--OPÇÃO LOGIN-->
+              <li id="optLogin" class="nav-item">
+                  <a data-toggle="modal" data-target="#loginModal" class="nav-link" href="#">Login</a>
+              </li>
+              <!--OPÇÃO REGISTO-->
+              <li id="optRegisto" class="nav-item">
+                  <a data-toggle="modal" data-target="#registoModal" class="nav-link" href="#">Registo</a>
+              </li>
+              <!--OPÇÃO USER-->
+              <li id="optUser" class="nav-item"></li>
+              <!--OPÇÃO LOGOUT-->
+              <li id="optLogout" class="nav-item">
+                  <a class="nav-link" href="#header">Logout</a>
+              </li>                                  
+          </ul>              
+        </div>
+      </nav>
+      <!-- FRAME HEADER -->
+      <div id="header">
+          <img src="assets/img/logoprojeto.png">
+      </div>
+      <!-- FRAME DESCRIÇÃO -->
+      <div id="desc">
+        <div class="container">
+            <div class="row centered">
+                <h1>Breve descrição</h1>
+                <br>
+                <br>
+                Este projeto tem como objetivo a conceção e implementação de uma plataforma de gestão de bibliotecas de rua que inclui a doação de livros, a visualização filtrada do catálogo disponível, a requisição/entrega de livros, a gestão de comentários e a notificação de disponibilidade de livros desejados, entre outros. 
+            </div>
+            <br>
+            <hr>
+        </div>
+      </div>
+      <!-- FRAME DOAR -->
+      <div id="doar">
+        <div class="container">
+            <div class="col-lg-8">
+                <h1>Doar Livros</h1>
+                <br>
+                <br>
+                <form id="frmDoar">
+                    <div class="form-group">
+                        <label for="inputTitulo">Titulo do Livro:</label>
+                        <input type="text" id="inputTitulo" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputAutor">Autor:</label>
+                        <input type="text" id="inputAutor" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputEditora">Editora:</label>
+                        <input type="text" id="inputEditora" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputAnoLanc">Ano de Lançamento:</label>
+                        <input type="number" value="2015" min="1000" max="2018" id="inputAnoLanc" required>
+                    </div>
+                    <div class="form-group" id="selectGenero">
+                    </div>
+                    <div class="form-group">
+                        <label for="inputCapa">Capa do livro:</label>
+                        <input type="url" id="inputCapa" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputEstado">Estado:</label>
+                        <select id="inputEstado" required>
+                            <option value="Bom">Bom</option>
+                            <option value="Aceitável">Aceitável</option>
+                            <option value="Fraco">Fraco</option>                      
+                        </select>
+                    </div>
+                    <div class="form-group" id="selectBiblioteca">
+                    </div>
+                    <input type="submit" id="btnRegLivros" name="Registar" value="Registar">
+                </form>
+            </div>
+            <br>
+            <hr>
+            <!-- TABELA -->
+            <div class="table-responsive">
+                <table id="tblLivros" class="table table-sm">            
+                </table>
+            </div>
+            <br>
+            <hr>
+        </div>
+      </div>
+      <!-- FRAME CATÁLOGO -->
+      <div id="catalogo">
+        <div class="container">
+            <div class="col-lg-8">
+                <h1>Catálogo</h1>
+                <br>
+                <br>
+                <form class="form-inline" id="filtCatalogo">
+                    <div class="form-group">
+                        <label for='inputGenero1'>Género:</label>
+                        <select id='inputGenero1'>
+                        </select>
+                    </div>
+                    <button id="btnProcurar" type="button" class="btn btn-primary mb-2 mr-1">Procurar</button>
+                </form>
+            </div>
+            <br>
+            <br>
+            <div class="col-lg-12">
+                <div id="frmCatalogo" class="container">
+                            
+                </div>
+            </div>
+            <div class="col-lg-8"></div>
+            <br>
+            <hr>
+        </div>
+      </div>
+      <!-- FRAME REQUISIÇÃO/ENTREGA -->
+      <div id="reqEnt">
+        <div class="container">
+            <div class="col-lg-8">
+                <h1>Requisição/Entrega</h1>
+                <br>
+                <br>
+                <form id="frmReqEnt">
+                    <div class="form-group" id="inputLivro">
+                        <label for="selectLivro">Livro:</label>
+                        <select id="selectLivro"></select>
+                    </div>
+                    <div class="form-group" >
+                        <label for="selectData">Data de Entrega:</label>
+                        <input type="date" id="selectData"> 
+                    </div>
+                    <button id="btnRequisitar" type="button" class="btn btn-primary mb-2 mr-1">Requisitar</button>
+                    <!-- <input type="submit" id="btnReq" name="Requisitar" value="Requisitar"> -->
+                </form>
+            </div>
+            <br>
+            <hr>
+            <div class="col-lg-8">
+                <!-- TABELA -->
+                <div class="table-responsive">
+                    <table id="tblRequisicoes" class="table table-sm">            
+                    </table>
+                </div>
+            </div>
+            <br>
+            <hr>
+        </div>
+      </div>
+      <!-- FRAME NOTIFICAÇÕES -->
+      <div id="notif">
+        <div class="container">
+            <div class="col-lg-8">
+                <h1>Notificações</h1>
+                <br>
+                <br>
+                <div id="frmNotif">
+
+                </div>
+            </div>
+            <br>
+            <hr>
+        </div>
+      </div>
+      <!-- FRAME CONFIGURAÇÕES -->
+      <div id="configuracoes">
+        <div class="container">
+            <div class="col-lg-8">
+                <h1>Configurações</h1>
+                <br>
+                <br>
+                <h3>Bibliotecas</h3>
+                <br>
+                <form id="frmBibliotecas">
+                    <div class="form-group">
+                        <label for="inputFreguesia">Freguesia:</label>
+                        <input type="text" id="inputFreguesia" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputMorada">Morada:</label>
+                        <input type="text" id="inputMorada" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputCapacidade">Capacidade de Livros:</label>
+                        <input type="text" id="inputCapacidade" required>
+                    </div>
+                    <input type="submit" id="btnRegBibliotecas" name="Registar" value="Registar">
+                </form>
+            </div>
+            <br>
+            <hr>
+            <div class="col-lg-8">
+                <div class="table-responsive">
+                    <table id="tblBiblioteca" class="table">            
+                    </table>
+                </div>
+            </div>
+            <br>
+            <hr>
+            <div class="col-lg-8">
+                <h3>Géneros</h3>
+                <br>
+                <form class="form-inline" id="frmGeneros">
+                    <div class="form-group">
+                        <label for="inputAdiGenero">Adicionar:</label>
+                        <input type="text" id="inputAdiGenero">
+                    </div>
+                    <input id="btnAdiGen" type="submit" name="Guardar" value="Guardar">
+                </form>
+            </div>
+            <br>
+            <hr>
+            <div class="col-lg-8">
+                <div class="table-responsive">
+                    <table id="tblGeneros" class="table">            
+                    </table>
+                </div>
+            </div>
+            <br>
+            <hr>
+            <div class="col-lg-8">
+                <h3>Gestão de Utilizadores</h3>
+                <br>
+                <div class="table-responsive">
+                    <table id="tblGestao" class="table">            
+                    </table>
+                </div>
+            </div>
+            <div class="col-lg-8">
+                <form id="frmGestao">
+                        <div class="form-group">
+                        <label for="gestaoNome">Nome:</label>
+                        <input type="text" id="gestaoNome"> 
+                    </div>
+                    <div class="form-group">
+                        <label for="gestaoDataNasc">Data de Nascimento:</label>
+                        <input type="date" id="gestaoDataNasc"> 
+                    </div>
+                    <div class="form-group">
+                        <label for="gestaoEmail">Email:</label>
+                        <input type="email" id="gestaoEmail"> 
+                    </div>
+                    <div class="form-group">
+                        <label for="gestaoUsername">Username:</label>
+                        <input type="text" id="gestaoUsername"> 
+                    </div>
+                    <div class="form-group">
+                        <label for="gestaoPassword">Password:</label>
+                        <input type="text" id="gestaoPassword"> 
+                    </div>
+                    <div class="form-group">
+                        <label for="gestaoAdmin">Tipo de Conta:</label>
+                        <select id="gestaoAdmin">
+                            <option value="2">User</option>
+                            <option value="1">Operador</option>
+                            <option value="0">Admininstrador</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <button id="btnAlterar" type="button" class="btn btn-primary mb-2 mr-1">Alterar</button>
+                        <input type="submit" id="btnGestaoUser" name="Guardar" value="Guardar">
+                    </div>
+                </form>
+            </div>
+            <br>
+            <hr>
+        </div>
+      </div>
+      <!-- FRAME FOOTER -->
+      <div id="footer">
+        <div class="container">
+            <div class="col-lg-8">
+                <h3>Páginas de Rua</h3>
+                <p>
+                Escola Superior de Media Artes e Design, Campus2 Vila do Conde / Póvoa de Varzim
+                <br/> Gonçalo Perdigão
+                <br/> Pedro Ferreira
+                <br/> André Gonçalves
+                </p>
+            </div>
+        </div>
+      </div>
+
+      <!--MODAL PARA REGISTO-->    
+      <div class="modal fade" id="registoModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Registo</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form id="frmRegisto">
+                        <!--NOME-->
+                        <div class="form-group">
+                            <label for="inputNome">Nome</label>
+                            <input required type="text" class="form-control" id="inputNome" placeholder="nome" >                        
+                        </div>
+                        <!--DATA DE NASCIMENTO-->
+                        <div class="form-group">
+                            <label for="inputData">Data de nascimento</label>
+                            <input required type="date" class="form-control" id="inputData" placeholder="data">
+                        </div>
+                        <!--EMAIL-->
+                        <div class="form-group">
+                            <label for="inputEmail">E-mail</label>
+                            <input required type="email" class="form-control" id="inputEmail" placeholder="email" >                        
+                        </div>
+                        <!--USERNAME-->
+                        <div class="form-group">
+                            <label for="inputUser">Username</label>
+                            <input required type="text" class="form-control" id="inputUser" placeholder="username">
+                        </div>
+                        <!--PASSWORD-->
+                        <div class="form-group">
+                            <label for="inputPassword1">Password</label>
+                            <input required type="password" class="form-control" id="inputPassword1" placeholder="password" >                        
+                        </div>
+                        <!-- CONFIRMAR PASSWORD-->
+                        <div class="form-group">
+                            <label for="inputPassword2">Confirmar password</label>
+                            <input required type="password" class="form-control" id="inputPassword2" placeholder="password">                        
+                        </div>                                   
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                        <input type="submit" class="btn btn-primary" value="Registar"/>
+                    </div>
+                </form>
+            </div>
+        </div>
+      </div>
+
+      <!--MODAL PARA AUTENTICAÇÃO-->    
+      <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Login</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form id="frmLogin">                    
+                        <!--USERNAME-->
+                        <div class="form-group">
+                            <label for="inputLoginUser">Username</label>
+                            <input required type="text" class="form-control" id="inputLoginUsername" placeholder="username" >                        
+                        </div>
+                        <!--PASSWORD-->
+                        <div class="form-group">
+                            <label for="inputLoginPassword">Password</label>
+                            <input required type="password" class="form-control" id="inputLoginPassword" placeholder="password" >                        
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                        <input type="submit" class="btn btn-primary" value="Login"/>
+                    </div>
+                </form>
+            </div>
+        </div>
+      </div>
+
+      <!--MODAL PARA VISUALIZAR OS DETALHES DO LIVRO-->
+      <div class="modal fade" id="livroModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modalLivroTitulo"></h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <h5>Autor</h5>
+                    <p id="modalLivroAutor"></p>
+                    <hr>
+                    <h5>Editora</h5>
+                    <p id="modalLivroEditora"></p>
+                    <hr>
+                    <h5>Ano de Lançamento</h5>
+                    <p id="modalLivroAnoLanc"></p>
+                    <hr>
+                    <h5>Género</h5>
+                    <p id="modalLivroGenero"></p>
+                    <hr>
+                    <h5>Capa</h5>
+                    <img id="modalLivroCapa" class="img-thumbnail" src="" alt="">
+                    <hr>
+                    <h5>Estado</h5>
+                    <p id="modalLivroEstado"></p>  
+                    <hr>
+                    <h5>Disponivel</h5>
+                    <p id="modalLivroDisponivel"></p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                </div>
+            </div>
+        </div>
+      </div>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+  </body>
+</html>
